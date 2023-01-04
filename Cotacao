@@ -1,0 +1,15 @@
+import json
+import requests
+import datetime
+import time
+
+
+while True:
+    requisicao = requests.get('http://economia.awesomeapi.com.br/json/last/USD,EUR,BTC')
+    cotacao = json.loads(requisicao.text)
+    print('$$$ COTAÇÃO $$$', datetime.datetime.now())
+    print('Dolar: ', cotacao['USDBRL']['bid'])
+    print('Euro: ', cotacao['EURBRL']['bid'])
+    print('Bitcoin: ', cotacao['BTCBRL']['bid'])
+
+    time.sleep(10)
